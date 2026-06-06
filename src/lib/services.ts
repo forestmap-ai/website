@@ -30,7 +30,7 @@ export const services: Service[] = [
     heroImage: '/photos/river-dawn.jpg',
     exampleImage: {
       src: '/photos/risk-map.jpg',
-      caption: 'Example output: a pixel-level deforestation risk surface. Brighter areas indicate higher predicted probability of forest loss in the coming year.',
+      caption: 'Example output: deforestation risk maps for the Democratic Republic of the Congo across forecast scenarios. Every forest pixel is classified as high, low, or no risk. From our peer-reviewed REDD+ baseline model (Ball et al., 2024, Scientific Reports).',
     },
     clientProblem:
       "We need to know where we'll lose forest before it happens - so we can prioritise patrols, target interventions, and defend our carbon assets.",

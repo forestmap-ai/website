@@ -9,7 +9,7 @@ pillars:
   - Decision Support
 order: 1
 summary: We built the AI biomass-forecasting system underpinning EquitableEarth's M002 REDD+ methodology - moving carbon baselines from static historical averages to dynamic, pixel-level forecasts.
-image: /photos/risk-map.jpg
+image: /photos/risk-map-card.jpg
 quote:
   text: It's been a pleasure working with such a knowledgeable and efficient team of computer vision experts. I couldn't recommend forestmap.ai more highly.
   name: Jeremy Freund
