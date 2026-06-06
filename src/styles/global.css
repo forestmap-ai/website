@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-forest-900 antialiased;
+    font-feature-settings: 'ss01';
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight text-forest-900;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    @apply bg-brand-green/30;
+  }
+}
+
+@layer components {
+  .container-content {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold
+      transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply btn bg-forest-700 text-white hover:bg-forest-800 focus-visible:ring-forest-600;
+  }
+
+  .btn-accent {
+    @apply btn bg-brand-green text-forest-950 hover:bg-brand-green-dark hover:text-white focus-visible:ring-brand-green;
+  }
+
+  .btn-ghost {
+    @apply btn border border-forest-200 bg-white text-forest-800 hover:border-forest-400 hover:bg-forest-50;
+  }
+
+  .btn-ghost-light {
+    @apply btn border border-white/30 bg-transparent text-white hover:bg-white/10;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-forest-500;
+  }
+
+  .link-accent {
+    @apply font-semibold text-forest-700 underline-offset-4 hover:text-brand-green-dark hover:underline;
+  }
+
+  .prose-forest {
+    @apply prose prose-lg max-w-none prose-headings:font-display prose-headings:text-forest-900
+      prose-a:text-forest-700 prose-a:font-medium hover:prose-a:text-brand-green-dark
+      prose-strong:text-forest-900 prose-blockquote:border-brand-green prose-blockquote:text-forest-700;
+  }
+}

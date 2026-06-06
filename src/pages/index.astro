@@ -1,0 +1,116 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import ServicePillarCard from '../components/ServicePillarCard.astro';
+import ProofStats from '../components/ProofStats.astro';
+import MarketContextBand from '../components/MarketContextBand.astro';
+import Testimonials from '../components/Testimonials.astro';
+import CaseStudyCard from '../components/CaseStudyCard.astro';
+import CTA from '../components/CTA.astro';
+import { pillars, withBase } from '../lib/site';
+
+const caseStudies = (await getCollection('caseStudies')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<Base>
+  <Hero
+    eyebrow="Forest intelligence, designed for action"
+    title="Where forest science becomes operational intelligence."
+    lead="We build AI systems that turn remote sensing data into operational forest intelligence - so you can forecast risk, map biodiversity, and prove impact with confidence. From individual tree crowns to satellite-scale landscapes, grounded in peer-reviewed science."
+    bgImage="/photos/forest-canopy.jpg"
+  >
+    <Fragment slot="actions">
+      <a href={withBase('/work')} class="btn-accent">See our work</a>
+      <a href={withBase('/contact')} class="btn-ghost-light">Get in touch</a>
+    </Fragment>
+  </Hero>
+
+  <Section>
+    <div class="max-w-2xl">
+      <p class="eyebrow">What we do</p>
+      <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">
+        Four ways we turn forest data into decisions.
+      </h2>
+      <p class="mt-4 text-lg text-forest-600">
+        Each engagement starts with the decision you need to make - then we build the AI and data
+        pipeline to support it.
+      </p>
+    </div>
+    <div class="mt-12 grid gap-6 md:grid-cols-2">
+      {
+        pillars.map((p) => (
+          <ServicePillarCard
+            name={p.name}
+            headline={p.headline}
+            summary={p.summary}
+            href={`/services/${p.slug}`}
+          />
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section tone="tint">
+    <div class="max-w-2xl">
+      <p class="eyebrow">Trusted across scales and sectors</p>
+      <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">
+        Operational systems, not research prototypes.
+      </h2>
+    </div>
+    <div class="mt-10">
+      <ProofStats />
+    </div>
+    <div class="mt-8">
+      <a href={withBase('/work')} class="link-accent">Read our case studies &rarr;</a>
+    </div>
+  </Section>
+
+  <MarketContextBand />
+
+  <Section>
+    <div class="grid gap-12 lg:grid-cols-[1fr_2fr] lg:items-start">
+      <div class="max-w-md">
+        <p class="eyebrow">Our work</p>
+        <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">
+          From carbon markets to city streets.
+        </h2>
+        <p class="mt-4 text-lg text-forest-600">
+          The same core approach - turning complex remote sensing data into ecological intelligence -
+          adapts across scales, sectors, and output types.
+        </p>
+        <a href={withBase('/work')} class="btn-primary mt-6">See all case studies</a>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2">
+        {
+          caseStudies.map((cs) => (
+            <CaseStudyCard
+              title={cs.data.title}
+              headline={cs.data.headline}
+              sector={cs.data.sector}
+              scale={cs.data.scale}
+              href={`/work/${cs.id}`}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="tint">
+    <div class="max-w-2xl">
+      <p class="eyebrow">What clients say</p>
+      <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">
+        Expertise that earns trust.
+      </h2>
+    </div>
+    <div class="mt-10">
+      <Testimonials />
+    </div>
+  </Section>
+
+  <CTA />
+</Base>

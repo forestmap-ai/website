@@ -1,0 +1,115 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import CTA from '../components/CTA.astro';
+import { withBase } from '../lib/site';
+
+const pillars = [
+  {
+    num: '01',
+    title: 'Individual Tree Detection',
+    body: 'We develop computer vision pipelines capable of delineating and identifying species of single tree crowns in dense canopies, enabling precise biomass estimation and automated carbon and biodiversity inventory at scale.',
+    underpins: 'Precision Inventory',
+    slug: 'precision-inventory',
+  },
+  {
+    num: '02',
+    title: 'Geospatial Forecasting',
+    body: 'Shifting from reactive monitoring to proactive forecasting. By analysing historical temporal signals, we develop models that predict future ecosystem changes, allowing stakeholders to anticipate shifts in forest cover before they occur.',
+    underpins: 'Risk Intelligence',
+    slug: 'risk-intelligence',
+  },
+  {
+    num: '03',
+    title: 'Geospatial Foundation Models',
+    body: 'We develop methods for applying emerging geospatial foundation models to forest ecosystems at scale. Our work focuses on using their embeddings to map forest composition, traits, and change across biomes, and to reveal new ecological signals.',
+    plain: 'In plain terms: large AI models pre-trained on vast amounts of Earth-observation data, which we adapt to read forests the way a language model reads text.',
+    underpins: 'Sensor Strategy',
+    slug: 'sensor-strategy',
+  },
+];
+
+const highlights = [
+  {
+    title: 'detectree2 - Crown Delineation with Mask R-CNN',
+    body: 'Python package for automatic tree crown delineation in aerial RGB and multispectral imagery, based on Mask R-CNN.',
+  },
+  {
+    title: 'Deforestation Forecasting with Deep CNNs',
+    body: 'Forecasting deforestation in complex Amazonian tropical forests using deep neural networks to learn the spatial-temporal dynamics of forest loss.',
+  },
+  {
+    title: 'Temporal & Spectral Dimensions for Species Mapping',
+    body: 'Combining multi-temporal deep-learning crown segmentation with hyperspectral imaging enables accurate, scalable mapping of species-level canopy composition in complex tropical forests.',
+  },
+  {
+    title: 'Multisensor Fusion for Tree Segmentation',
+    body: 'Fusing airborne laser scanning with multispectral and hyperspectral data through deep learning significantly improves individual tree crown segmentation and enables reliable estimation of tree mortality.',
+  },
+];
+---
+
+<Base title="Research" description="Foundational AI for understanding forests, from individual trees to the global biosphere.">
+  <Hero
+    eyebrow="Research"
+    title="Foundational AI for understanding forests."
+    lead="The future of forest remote sensing lies in grounding powerful AI tools in real ecological data. Our research develops geospatial AI methods that bridge scales - from individual trees to pan-tropical forest systems - and grounds them in field-based ecological measurement."
+  >
+    <Fragment slot="actions">
+      <a href={withBase('/services')} class="btn-accent">See our research-backed services</a>
+    </Fragment>
+  </Hero>
+
+  <Section>
+    <div class="max-w-2xl">
+      <p class="eyebrow">Beyond monitoring</p>
+      <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">Three research pillars.</h2>
+      <p class="mt-4 text-lg text-forest-600">
+        We move beyond simple monitoring to predictive understanding, decoding the complexity of the
+        world's forests - and each pillar feeds directly into a commercial service.
+      </p>
+    </div>
+    <div class="mt-10 grid gap-6 lg:grid-cols-3">
+      {
+        pillars.map((p) => (
+          <div class="flex h-full flex-col rounded-3xl border border-forest-100 bg-white p-7">
+            <span class="font-display text-3xl font-semibold text-brand-blue">{p.num}</span>
+            <h3 class="mt-3 text-lg font-semibold text-forest-900">{p.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-forest-600">{p.body}</p>
+            {p.plain && <p class="mt-3 rounded-xl bg-forest-50 p-3 text-sm italic text-forest-600">{p.plain}</p>}
+            <a href={withBase(`/services/${p.slug}`)} class="mt-auto pt-5 text-sm font-semibold text-forest-700 hover:text-brand-green-dark">
+              Underpins {p.underpins} &rarr;
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section tone="tint">
+    <div class="max-w-2xl">
+      <p class="eyebrow">Research highlights</p>
+      <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">Peer-reviewed and open-source.</h2>
+    </div>
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      {
+        highlights.map((h) => (
+          <div class="rounded-3xl border border-forest-100 bg-white p-7">
+            <h3 class="text-lg font-semibold text-forest-900">{h.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-forest-600">{h.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <CTA
+    title="Research that translates into results."
+    text="Our published methods become the operational systems we build for clients. See how."
+    primaryLabel="Explore our services"
+    primaryHref="/services"
+    secondaryLabel="See our work"
+    secondaryHref="/work"
+  />
+</Base>

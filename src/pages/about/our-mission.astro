@@ -1,0 +1,97 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import Section from '../../components/Section.astro';
+import CTA from '../../components/CTA.astro';
+import { withBase } from '../../lib/site';
+
+const challenges = [
+  {
+    title: 'Forecasting forest loss before it happens',
+    body: 'We use time-series satellite data and deep learning to predict where deforestation will occur, giving organisations the lead time to intervene.',
+    service: 'Risk Intelligence',
+    slug: 'risk-intelligence',
+  },
+  {
+    title: 'Tracking what\u2019s changing, tree by tree',
+    body: 'Our AI systems monitor individual trees over time, detecting growth, mortality, and health shifts that traditional methods miss.',
+    service: 'Precision Inventory',
+    slug: 'precision-inventory',
+  },
+  {
+    title: 'Mapping the species that define ecosystem function',
+    body: 'We identify tree species from remote sensing at scale, providing the compositional detail that turns generic forest metrics into ecological intelligence.',
+    service: 'Precision Inventory',
+    slug: 'precision-inventory',
+  },
+];
+---
+
+<Base title="Our Mission" description="We make forests legible - so that the organisations protecting, managing, and investing in them can make better decisions, faster.">
+  <Hero
+    eyebrow="Our Mission"
+    title="We make forests legible - so better decisions get made, faster."
+    lead="forestmap.ai exists to close the gap between the data we can collect about forests and the understanding organisations need to act on it."
+  />
+
+  <Section>
+    <div class="prose-forest max-w-3xl">
+      <p>
+        Tropical forests are the most biodiverse ecosystems on Earth, storing vast amounts of carbon
+        and supporting half of all terrestrial species. But understanding these systems at the scale
+        and speed that modern conservation, carbon markets, and regulation demand is a fundamentally
+        different challenge from studying them in the field. That's the gap forestmap.ai exists to
+        close.
+      </p>
+      <p>
+        We sit at the intersection of ecology, remote sensing, and AI. What makes us different is not
+        just that we do each of these - it's that we bridge the full stack, from individual tree
+        crowns to satellite-scale landscapes, grounded in peer-reviewed science and delivered as
+        working systems, not research prototypes.
+      </p>
+    </div>
+  </Section>
+
+  <Section tone="tint">
+    <div class="max-w-2xl">
+      <p class="eyebrow">The challenges we take on</p>
+      <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">Three problems, one approach.</h2>
+    </div>
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      {
+        challenges.map((c) => (
+          <div class="flex h-full flex-col rounded-3xl border border-forest-100 bg-white p-7">
+            <h3 class="text-lg font-semibold text-forest-900">{c.title}</h3>
+            <p class="mt-3 flex-1 text-sm leading-relaxed text-forest-600">{c.body}</p>
+            <a href={withBase(`/services/${c.slug}`)} class="mt-5 text-sm font-semibold text-forest-700 hover:text-brand-green-dark">
+              Underpins our {c.service} offering &rarr;
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section tone="dark">
+    <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
+      <div>
+        <p class="eyebrow text-brand-blue">What clients get</p>
+        <h2 class="mt-3 text-2xl font-semibold text-white sm:text-3xl">Speed, coverage, auditability, ecological depth.</h2>
+        <p class="mt-5 text-lg leading-relaxed text-forest-100">
+          We don't just explain the technology - we connect it to outcomes. Our work has set carbon
+          baselines for a public REDD+ methodology, established a conservation baseline across a UNESCO
+          Biosphere Reserve, and put AI tree-inventory tools into the hands of municipal arborists.
+        </p>
+        <a href={withBase('/work')} class="btn-accent mt-6">See our work</a>
+      </div>
+      <img
+        src={withBase('/photos/fieldwork-drone.jpg')}
+        alt="forestmap.ai field team operating a survey drone"
+        loading="lazy"
+        class="aspect-[4/3] w-full rounded-3xl object-cover"
+      />
+    </div>
+  </Section>
+
+  <CTA />
+</Base>

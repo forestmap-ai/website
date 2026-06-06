@@ -1,0 +1,32 @@
+---
+import { withBase } from '../lib/site';
+interface Props {
+  title?: string;
+  text?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
+const {
+  title = "Let's talk about your forest.",
+  text = 'A first conversation typically takes 30 minutes. We will ask about your site, your data, and the decisions you need to support - and we will be honest about whether we are the right fit.',
+  primaryLabel = 'Get in touch',
+  primaryHref = '/contact',
+  secondaryLabel = 'See our work',
+  secondaryHref = '/work',
+} = Astro.props;
+---
+
+<section class="bg-forest-950 text-white">
+  <div class="container-content py-16 sm:py-20">
+    <div class="rounded-3xl border border-forest-800 bg-gradient-to-br from-forest-900 to-forest-950 p-10 sm:p-14">
+      <h2 class="max-w-2xl text-3xl font-semibold text-white sm:text-4xl">{title}</h2>
+      <p class="mt-4 max-w-2xl text-lg leading-relaxed text-forest-200">{text}</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href={withBase(primaryHref)} class="btn-accent">{primaryLabel}</a>
+        {secondaryLabel && <a href={withBase(secondaryHref)} class="btn-ghost-light">{secondaryLabel}</a>}
+      </div>
+    </div>
+  </div>
+</section>

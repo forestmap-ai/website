@@ -1,0 +1,92 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import Section from '../../components/Section.astro';
+import CTA from '../../components/CTA.astro';
+import { services } from '../../lib/services';
+import { withBase } from '../../lib/site';
+
+export function getStaticPaths() {
+  return services.map((s) => ({ params: { slug: s.slug }, props: { service: s } }));
+}
+
+const { service } = Astro.props;
+---
+
+<Base title={service.name} description={service.lead}>
+  <Hero eyebrow={service.eyebrow} title={service.heroTitle} lead={service.lead}>
+    <Fragment slot="actions">
+      <a href={withBase('/contact')} class="btn-accent">Book a scoping call</a>
+      <a href={withBase('/work')} class="btn-ghost-light">See our work</a>
+    </Fragment>
+  </Hero>
+
+  <Section tone="tint">
+    <div class="rounded-3xl border border-forest-100 bg-white p-8 sm:p-10">
+      <p class="eyebrow">The problem we solve</p>
+      <p class="mt-4 font-display text-2xl leading-snug text-forest-900 sm:text-3xl">
+        &ldquo;{service.clientProblem}&rdquo;
+      </p>
+    </div>
+  </Section>
+
+  <Section>
+    <div class="max-w-2xl">
+      <p class="eyebrow">What we provide</p>
+      <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">What you get, and why it matters.</h2>
+    </div>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2">
+      {
+        service.provisions.map((p, i) => (
+          <div class="rounded-3xl border border-forest-100 bg-white p-7">
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-forest-50 font-display text-sm font-semibold text-brand-green-dark">
+              {String(i + 1).padStart(2, '0')}
+            </div>
+            <h3 class="mt-4 text-lg font-semibold text-forest-900">{p.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-forest-600">{p.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  {
+    service.marketContext && (
+      <Section tone="tint">
+        <div class="grid gap-8 lg:grid-cols-[1fr_2fr]">
+          <div>
+            <p class="eyebrow">How we work & why now</p>
+            <h2 class="mt-3 text-2xl font-semibold sm:text-3xl">Context & process</h2>
+          </div>
+          <p class="text-lg leading-relaxed text-forest-700">{service.marketContext}</p>
+        </div>
+      </Section>
+    )
+  }
+
+  <Section tone="dark">
+    <div class="grid gap-8 lg:grid-cols-[1fr_2fr] lg:items-center">
+      <p class="eyebrow text-brand-blue">Evidence</p>
+      <p class="text-xl leading-relaxed text-forest-100">{service.evidence}</p>
+    </div>
+    {
+      service.relatedCaseStudy && (
+        <div class="mt-10 rounded-3xl border border-forest-800 bg-forest-900 p-8">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-green">Case study</p>
+          <p class="mt-3 text-lg text-forest-100">{service.relatedCaseStudy.label}</p>
+          <a href={withBase(`/work/${service.relatedCaseStudy.id}`)} class="btn-accent mt-5">
+            Read the case study
+          </a>
+        </div>
+      )
+    }
+  </Section>
+
+  <CTA
+    title="Working on something similar?"
+    text="Tell us about your site, your data, and the decision you need to support. A first scoping conversation usually takes 30 minutes."
+    primaryLabel="Book a scoping call"
+    secondaryLabel="Explore other services"
+    secondaryHref="/services"
+  />
+</Base>

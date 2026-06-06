@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import Section from '../../components/Section.astro';
+import ServicePillarCard from '../../components/ServicePillarCard.astro';
+import CTA from '../../components/CTA.astro';
+import { pillars } from '../../lib/site';
+---
+
+<Base title="Services" description="Four service pillars: Risk Intelligence, Precision Inventory, Sensor Strategy, and Decision Support.">
+  <Hero
+    eyebrow="Services"
+    title="Forest intelligence across every scale and sector."
+    lead="We don't sell a product off the shelf. We build the AI and data systems that answer the specific questions your organisation needs answered - grounded in peer-reviewed science and designed to produce outputs you can defend."
+  />
+
+  <Section>
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        pillars.map((p) => (
+          <ServicePillarCard
+            name={p.name}
+            headline={p.headline}
+            summary={p.summary}
+            href={`/services/${p.slug}`}
+          />
+        ))
+      }
+    </div>
+  </Section>
+
+  <CTA />
+</Base>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://forestmap-ai.github.io/sitemap-index.xml

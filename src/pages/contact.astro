@@ -1,0 +1,100 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import { site } from '../lib/site';
+
+const formAction = `https://formspree.io/f/${site.formspreeId}`;
+const formConfigured = site.formspreeId !== 'your-form-id';
+---
+
+<Base title="Contact" description="Let's talk about your forest. A first conversation typically takes 30 minutes.">
+  <Hero
+    eyebrow="Contact"
+    title="Let's talk about your forest."
+    lead="Whether you're scoping a new project, exploring what AI can add to your monitoring workflow, or looking for a technical partner - we'd like to hear from you."
+  />
+
+  <Section>
+    <div class="grid gap-12 lg:grid-cols-[1fr_1.3fr]">
+      <div>
+        <h2 class="text-2xl font-semibold text-forest-900">What happens next</h2>
+        <ul class="mt-6 space-y-5">
+          <li class="flex gap-4">
+            <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-forest-900 text-sm font-semibold text-brand-green">1</span>
+            <p class="text-forest-600">We typically respond within <span class="font-semibold text-forest-900">48 hours</span>.</p>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-forest-900 text-sm font-semibold text-brand-green">2</span>
+            <p class="text-forest-600">A first conversation usually takes <span class="font-semibold text-forest-900">30 minutes</span>. We'll ask about your site, your data, and the decisions you need to support.</p>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-forest-900 text-sm font-semibold text-brand-green">3</span>
+            <p class="text-forest-600">We'll be <span class="font-semibold text-forest-900">honest about whether we're the right fit</span> - and suggest a sensible next step either way.</p>
+          </li>
+        </ul>
+
+        <div class="mt-10 rounded-3xl border border-forest-100 bg-forest-50 p-7">
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-forest-500">Reach us directly</p>
+          <div class="mt-4 space-y-2">
+            <a href={`mailto:${site.email}`} class="block text-lg font-medium text-forest-900 hover:text-brand-green-dark">{site.email}</a>
+            <a href={`tel:${site.phoneHref}`} class="block text-lg font-medium text-forest-900 hover:text-brand-green-dark">{site.phone}</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-3xl border border-forest-100 bg-white p-7 sm:p-9">
+        <form action={formAction} method="POST" class="grid gap-5">
+          <div class="grid gap-5 sm:grid-cols-2">
+            <label class="block">
+              <span class="text-sm font-medium text-forest-800">Name</span>
+              <input
+                type="text"
+                name="name"
+                required
+                class="mt-2 w-full rounded-xl border border-forest-200 px-4 py-3 text-forest-900 outline-none focus:border-brand-green focus:ring-2 focus:ring-brand-green/30"
+              />
+            </label>
+            <label class="block">
+              <span class="text-sm font-medium text-forest-800">Email</span>
+              <input
+                type="email"
+                name="email"
+                required
+                class="mt-2 w-full rounded-xl border border-forest-200 px-4 py-3 text-forest-900 outline-none focus:border-brand-green focus:ring-2 focus:ring-brand-green/30"
+              />
+            </label>
+          </div>
+          <label class="block">
+            <span class="text-sm font-medium text-forest-800">Organisation</span>
+            <input
+              type="text"
+              name="organisation"
+              class="mt-2 w-full rounded-xl border border-forest-200 px-4 py-3 text-forest-900 outline-none focus:border-brand-green focus:ring-2 focus:ring-brand-green/30"
+            />
+          </label>
+          <label class="block">
+            <span class="text-sm font-medium text-forest-800">How can we help?</span>
+            <textarea
+              name="message"
+              rows="5"
+              required
+              placeholder="Tell us about your site, your data, and the decision you need to support."
+              class="mt-2 w-full rounded-xl border border-forest-200 px-4 py-3 text-forest-900 outline-none focus:border-brand-green focus:ring-2 focus:ring-brand-green/30"
+            ></textarea>
+          </label>
+          <button type="submit" class="btn-accent w-full sm:w-auto">Send message</button>
+          {
+            !formConfigured && (
+              <p class="text-xs text-forest-400">
+                Note: set a Formspree form ID in <code>src/lib/site.ts</code> to enable delivery. Until
+                then, please email us directly.
+              </p>
+            )
+          }
+          <p class="text-xs text-forest-400">By submitting this form, you acknowledge our privacy policy.</p>
+        </form>
+      </div>
+    </div>
+  </Section>
+</Base>

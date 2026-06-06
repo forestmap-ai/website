@@ -1,0 +1,55 @@
+---
+import { site, nav, withBase } from '../lib/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-24 border-t border-forest-800 bg-forest-950 text-forest-100">
+  <div class="container-content grid gap-12 py-16 md:grid-cols-[1.5fr_1fr_1fr]">
+    <div class="max-w-sm">
+      <img src={withBase('/brand/logo-dark.png')} alt="forestmap.ai" class="h-9 w-auto" />
+      <p class="mt-5 text-sm leading-relaxed text-forest-300">
+        We turn cutting-edge forest science into operational intelligence - so organisations can act
+        faster, allocate smarter, and prove impact with confidence.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-forest-400">Explore</h2>
+      <ul class="mt-4 space-y-2 text-sm">
+        {
+          nav.map((item) => (
+            <li>
+              <a
+                href={item.external ? item.href : withBase(item.href)}
+                target={item.external ? '_blank' : undefined}
+                rel={item.external ? 'noopener' : undefined}
+                class="text-forest-200 transition hover:text-brand-green"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-forest-400">Contact</h2>
+      <ul class="mt-4 space-y-2 text-sm">
+        <li>
+          <a href={`mailto:${site.email}`} class="text-forest-200 transition hover:text-brand-green">{site.email}</a>
+        </li>
+        <li>
+          <a href={`tel:${site.phoneHref}`} class="text-forest-200 transition hover:text-brand-green">{site.phone}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-forest-800">
+    <div class="container-content flex flex-col items-center justify-between gap-3 py-6 text-xs text-forest-400 sm:flex-row">
+      <p>&copy; {year} {site.name}. All rights reserved.</p>
+      <p>Forest intelligence, designed for action.</p>
+    </div>
+  </div>
+</footer>

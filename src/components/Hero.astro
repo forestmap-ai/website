@@ -1,0 +1,49 @@
+---
+import { withBase } from '../lib/site';
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  bgImage?: string;
+}
+const { eyebrow, title, lead, bgImage } = Astro.props;
+const bgUrl = bgImage ? withBase(bgImage) : null;
+---
+
+<section class="relative overflow-hidden bg-forest-950 text-white">
+  {
+    bgUrl && (
+      <div class="absolute inset-0" aria-hidden="true">
+        <div class="absolute inset-0 bg-cover bg-center" style={`background-image: url('${bgUrl}')`} />
+        <div class="absolute inset-0 bg-gradient-to-r from-forest-950 via-forest-950/85 to-forest-950/40" />
+        <div class="absolute inset-0 bg-gradient-to-t from-forest-950 via-transparent to-forest-950/30" />
+      </div>
+    )
+  }
+  <div class="absolute inset-0" aria-hidden="true">
+    <div class:list={['absolute -left-32 -top-32 h-96 w-96 rounded-full bg-brand-green/20 blur-3xl', bgUrl && 'opacity-40']}></div>
+    <div class:list={['absolute -bottom-40 right-0 h-[28rem] w-[28rem] rounded-full bg-brand-blue/10 blur-3xl', bgUrl && 'opacity-40']}></div>
+    {
+      !bgUrl && (
+        <div
+          class="absolute inset-0 opacity-[0.07]"
+          style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 28px 28px;"
+        />
+      )
+    }
+  </div>
+
+  <div class="container-content relative py-20 sm:py-28">
+    <div class="max-w-3xl">
+      {eyebrow && <p class="eyebrow text-brand-blue">{eyebrow}</p>}
+      <h1 class="mt-4 text-4xl font-semibold leading-[1.05] text-white sm:text-5xl lg:text-6xl">
+        {title}
+      </h1>
+      {lead && <p class="mt-6 max-w-2xl text-lg leading-relaxed text-forest-200">{lead}</p>}
+      <div class="mt-9 flex flex-wrap gap-3">
+        <slot name="actions" />
+      </div>
+    </div>
+    <slot />
+  </div>
+</section>
