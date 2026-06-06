@@ -14,7 +14,7 @@ const { service } = Astro.props;
 ---
 
 <Base title={service.name} description={service.lead}>
-  <Hero eyebrow={service.eyebrow} title={service.heroTitle} lead={service.lead}>
+  <Hero eyebrow={service.eyebrow} title={service.heroTitle} lead={service.lead} bgImage={service.heroImage}>
     <Fragment slot="actions">
       <a href={withBase('/contact')} class="btn-accent">Book a scoping call</a>
       <a href={withBase('/work')} class="btn-ghost-light">See our work</a>
@@ -49,6 +49,23 @@ const { service } = Astro.props;
       }
     </div>
   </Section>
+
+  {
+    service.exampleImage && (
+      <Section tone="tint">
+        <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
+          <div>
+            <p class="eyebrow">Example output</p>
+            <h2 class="mt-3 text-2xl font-semibold sm:text-3xl">What you actually receive.</h2>
+            <p class="mt-4 text-lg leading-relaxed text-forest-600">{service.exampleImage.caption}</p>
+          </div>
+          <figure class="overflow-hidden rounded-3xl border border-forest-100 bg-forest-950">
+            <img src={withBase(service.exampleImage.src)} alt={service.exampleImage.caption} loading="lazy" class="w-full" />
+          </figure>
+        </div>
+      </Section>
+    )
+  }
 
   {
     service.marketContext && (

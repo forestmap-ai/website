@@ -16,6 +16,7 @@ const caseStudies = (await getCollection('caseStudies')).sort(
     eyebrow="Our Work"
     title="The same approach, proven across scales and sectors."
     lead="From continental REDD+ jurisdictions to a single island to city streets - forestmap.ai turns complex remote sensing data into ecological intelligence that drives real decisions. We are not a one-trick research lab."
+    bgImage="/photos/forest-canopy.jpg"
   />
 
   <Section>
@@ -27,6 +28,7 @@ const caseStudies = (await getCollection('caseStudies')).sort(
             headline={cs.data.headline}
             sector={cs.data.sector}
             scale={cs.data.scale}
+            image={cs.data.image}
             href={`/work/${cs.id}`}
           />
         ))

@@ -9,6 +9,7 @@ pillars:
   - Sensor Strategy
 order: 3
 summary: We contributed the computer vision models behind a live web application that lets municipal arborists upload drone imagery and receive automated tree inventory and health assessments.
+image: /photos/fieldwork-drone.jpg
 ---
 
 ## The challenge

@@ -10,10 +10,12 @@ export type Service = {
   eyebrow: string;
   heroTitle: string;
   lead: string;
+  heroImage: string;
   clientProblem: string;
   provisions: Provision[];
   evidence: string;
   marketContext?: string;
+  exampleImage?: { src: string; caption: string };
   relatedCaseStudy?: { id: string; label: string };
 };
 
@@ -25,6 +27,11 @@ export const services: Service[] = [
     eyebrow: 'Risk Intelligence',
     heroTitle: "Deforestation doesn't happen at random. Our AI learns where it's heading next.",
     lead: 'We build forecasting systems that predict where forest loss is most likely to occur within the next year - at 30m resolution. Organisations use our risk maps to prioritise patrols, allocate conservation resources, defend carbon baselines, and meet EUDR due-diligence requirements.',
+    heroImage: '/photos/river-dawn.jpg',
+    exampleImage: {
+      src: '/photos/risk-map.jpg',
+      caption: 'Example output: a pixel-level deforestation risk surface. Brighter areas indicate higher predicted probability of forest loss in the coming year.',
+    },
     clientProblem:
       "We need to know where we'll lose forest before it happens - so we can prioritise patrols, target interventions, and defend our carbon assets.",
     provisions: [
@@ -61,6 +68,7 @@ export const services: Service[] = [
     eyebrow: 'Precision Inventory',
     heroTitle: "If you can't tell what species are in your forest, you can't manage it, value it, or defend your claims about it.",
     lead: 'We map individual tree crowns and classify species from aerial and satellite imagery - in forests where canopies are dense, species are diverse, and off-the-shelf products fall short. The result is an ecological inventory detailed enough to support carbon accounting, biodiversity assessment, EUDR compliance, and restoration monitoring.',
+    heroImage: '/photos/tree-climb-2.jpg',
     clientProblem:
       "We need to know what's actually in our forest - species, structure, health - not just that it's green.",
     provisions: [
@@ -97,6 +105,7 @@ export const services: Service[] = [
     eyebrow: 'Sensor Strategy',
     heroTitle: 'You don\u2019t need more data. You need the right data - and the AI to make sense of it.',
     lead: 'Forest monitoring projects fail not because of insufficient technology, but because of mismatched data strategies. We design the sensor strategy that fits your site, your question, and your budget - then build the AI pipeline to fuse and interpret the data.',
+    heroImage: '/photos/fieldwork-drone.jpg',
     clientProblem:
       "We have a site and a question, but we don't know what data to collect or how to combine it.",
     provisions: [
@@ -137,6 +146,7 @@ export const services: Service[] = [
     eyebrow: 'Decision Support',
     heroTitle: 'Carbon baselines, restoration tracking, biodiversity monitoring - built for audit.',
     lead: 'We design end-to-end monitoring systems that produce outputs you can defend: carbon stock estimates, biomass change forecasts, biodiversity baselines, and restoration metrics. Transparent, repeatable, and ready for third-party review.',
+    heroImage: '/photos/forest-canopy.jpg',
     clientProblem:
       'We need carbon baselines, restoration tracking, or biodiversity monitoring that will survive an audit.',
     provisions: [

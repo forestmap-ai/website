@@ -9,6 +9,7 @@ pillars:
   - Sensor Strategy
 order: 2
 summary: We produced a spatially explicit tree and species inventory across a UNESCO Biosphere Reserve, giving the Faya Foundation the ecological baseline it needs to drive conservation decisions.
+image: /photos/forest-canopy.jpg
 ---
 
 ## The challenge

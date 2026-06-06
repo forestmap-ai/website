@@ -92,6 +92,7 @@ const caseStudies = (await getCollection('caseStudies')).sort(
               headline={cs.data.headline}
               sector={cs.data.sector}
               scale={cs.data.scale}
+              image={cs.data.image}
               href={`/work/${cs.id}`}
             />
           ))

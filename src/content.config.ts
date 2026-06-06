@@ -11,6 +11,7 @@ const caseStudies = defineCollection({
     client: z.string(),
     pillars: z.array(z.string()).default([]),
     summary: z.string(),
+    image: z.string().optional(),
     order: z.number().default(99),
     quote: z
       .object({
