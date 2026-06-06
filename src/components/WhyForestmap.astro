@@ -1,0 +1,68 @@
+---
+// The USP section: states, in one place, why forestmap.ai is uniquely
+// positioned - and therefore why the work commands a premium. Built around the
+// three pillars in Brand/positioning.md and the positioning map in
+// Brand/competitors.md (above platforms, consultancies, and academic labs).
+import { withBase } from '../lib/site';
+
+interface Props {
+  tone?: 'white' | 'tint';
+}
+const { tone = 'white' } = Astro.props;
+const bg = tone === 'tint' ? 'bg-forest-50' : 'bg-white';
+
+const pillars = [
+  {
+    title: 'Emerging science, made operational',
+    body: 'We deploy the newest methods - geospatial foundation models, peer-reviewed forecasting, individual-tree AI - as working systems, not research prototypes. The science is current; the delivery is production-grade.',
+  },
+  {
+    title: 'Rooted in real fieldwork',
+    body: 'Our models are built and validated by people who climb the trees and fly the drones. That hands-on ecological grounding is what keeps our outputs honest - and what most platforms and pure-AI teams simply do not have.',
+  },
+  {
+    title: 'Built around your decision',
+    body: 'We are not a one-size-fits-all dashboard. Every engagement starts from the decision you need to make, then we design the sensor strategy and AI to support it - tailored to your site, your data, and your operational reality.',
+  },
+];
+---
+
+<section class={bg}>
+  <div class="container-content py-16 sm:py-24">
+    <div class="max-w-2xl">
+      <p class="eyebrow">Why forestmap</p>
+      <h2 class="mt-3 text-3xl font-semibold sm:text-4xl">
+        The bridge between emerging forest science and operations.
+      </h2>
+      <p class="mt-4 text-lg text-forest-600">
+        Platforms give you coarse satellite extent. Consultancies send teams to survey by hand.
+        Academic labs publish papers. We do the thing none of them can: turn the frontier of forest
+        science into systems you can run, defend, and act on.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {
+        pillars.map((p, i) => (
+          <div class="flex h-full flex-col rounded-3xl border border-forest-100 bg-white p-7">
+            <span class="font-display text-3xl font-semibold text-brand-blue">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <h3 class="mt-3 text-lg font-semibold text-forest-900">{p.title}</h3>
+            <p class="mt-3 flex-1 text-sm leading-relaxed text-forest-600">{p.body}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-10 rounded-3xl border border-forest-100 bg-forest-950 p-8 sm:p-10">
+      <p class="max-w-3xl text-lg leading-relaxed text-forest-100">
+        That combination - <span class="font-semibold text-white">scientific depth, field-tested
+        judgement, and bespoke AI delivery</span> - is rare. It is why our outputs hold up under
+        carbon-market audit, regulatory scrutiny, and scientific review, and why organisations come
+        to us when off-the-shelf products and generalist consultancies fall short.
+      </p>
+      <a href={withBase('/work')} class="mt-6 inline-block font-semibold text-brand-green underline-offset-4 hover:text-brand-green-dark hover:underline">See the proof in our work &rarr;</a>
+    </div>
+  </div>
+</section>

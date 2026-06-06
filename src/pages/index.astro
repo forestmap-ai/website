@@ -8,6 +8,7 @@ import ProofStats from '../components/ProofStats.astro';
 import MarketContextBand from '../components/MarketContextBand.astro';
 import Testimonials from '../components/Testimonials.astro';
 import CaseStudyCard from '../components/CaseStudyCard.astro';
+import WhyForestmap from '../components/WhyForestmap.astro';
 import CTA from '../components/CTA.astro';
 import { pillars, withBase } from '../lib/site';
 
@@ -28,6 +29,8 @@ const caseStudies = (await getCollection('caseStudies')).sort(
       <a href={withBase('/contact')} class="btn-ghost-light">Get in touch</a>
     </Fragment>
   </Hero>
+
+  <WhyForestmap />
 
   <Section>
     <div class="max-w-2xl">
@@ -100,6 +103,31 @@ const caseStudies = (await getCollection('caseStudies')).sort(
       </div>
     </div>
   </Section>
+
+  <section class="bg-forest-950 text-white">
+    <div class="container-content py-16 sm:py-20">
+      <div class="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-center">
+        <figure>
+          <blockquote class="font-display text-2xl font-medium leading-snug text-white sm:text-3xl">
+            &ldquo;The best forest AI isn't built in a lab - it's built by people who have stood under
+            the canopy. That's what we offer clients: frontier science, grounded in the field, and
+            delivered as systems they can actually act on.&rdquo;
+          </blockquote>
+          <figcaption class="mt-6 text-sm text-forest-300">
+            <span class="font-semibold text-brand-green">Dr James Ball</span> &middot; Founder &amp; CEO
+          </figcaption>
+        </figure>
+        <img
+          src={withBase('/photos/fieldwork-drone.jpg')}
+          alt="James Ball demonstrating drone survey techniques to the field team in Harapan, Indonesia"
+          loading="lazy"
+          width="800"
+          height="600"
+          class="aspect-[4/3] w-full rounded-3xl object-cover"
+        />
+      </div>
+    </div>
+  </section>
 
   <Section tone="tint">
     <div class="max-w-2xl">

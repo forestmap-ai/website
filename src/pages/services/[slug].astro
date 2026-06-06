@@ -48,6 +48,16 @@ const { service } = Astro.props;
         ))
       }
     </div>
+    {
+      service.researchLink && (
+        <a
+          href={withBase(service.researchLink.href)}
+          class="mt-8 inline-block font-semibold text-forest-700 underline-offset-4 hover:text-brand-green-dark hover:underline"
+        >
+          {service.researchLink.label} &rarr;
+        </a>
+      )
+    }
   </Section>
 
   {
@@ -61,6 +71,13 @@ const { service } = Astro.props;
           </div>
           <figure class="overflow-hidden rounded-3xl border border-forest-100 bg-forest-950">
             <img src={withBase(service.exampleImage.src)} alt={service.exampleImage.caption} loading="lazy" class="w-full" />
+            {
+              service.exampleImage.credit && (
+                <figcaption class="bg-forest-950 px-4 py-3 text-xs text-forest-400">
+                  {service.exampleImage.credit}
+                </figcaption>
+              )
+            }
           </figure>
         </div>
       </Section>

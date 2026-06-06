@@ -107,7 +107,7 @@ export type ProofPoint = { stat: string; label: string };
 export const proofPoints: ProofPoint[] = [
   { stat: 'M002', label: "Built the biomass forecasting system underpinning EquitableEarth's REDD+ methodology" },
   { stat: 'UNESCO', label: 'Mapped tree species across a Biosphere Reserve on Principe Island' },
-  { stat: 'Live', label: 'Computer vision models powering a municipal tree-inventory app across German cities' },
+  { stat: 'Live', label: 'Optimised and operationalised the AI behind a municipal tree-inventory app, now expanding across German cities' },
   { stat: 'Peer-reviewed', label: 'Published in Methods in Ecology and Evolution, Remote Sensing in Ecology and Conservation, and more' },
 ];
 

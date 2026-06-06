@@ -50,6 +50,30 @@ const challenges = [
         working systems, not research prototypes.
       </p>
     </div>
+
+    <div class="mt-12 grid gap-6 border-t border-forest-100 pt-12 md:grid-cols-3">
+      {
+        [
+          {
+            title: 'Emerging science, made operational',
+            body: 'We deploy the newest methods - foundation models, peer-reviewed forecasting, individual-tree AI - as systems you can run, not papers you have to interpret.',
+          },
+          {
+            title: 'Rooted in real fieldwork',
+            body: 'Our models are built and validated by people who climb the trees and fly the drones. That grounding keeps our outputs honest.',
+          },
+          {
+            title: 'Built around your decision',
+            body: 'Every engagement starts from the decision you need to make - then we design the data and AI to support it.',
+          },
+        ].map((p) => (
+          <div>
+            <h3 class="text-base font-semibold text-forest-900">{p.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-forest-600">{p.body}</p>
+          </div>
+        ))
+      }
+    </div>
   </Section>
 
   <Section tone="tint">
@@ -86,7 +110,7 @@ const challenges = [
       </div>
       <img
         src={withBase('/photos/fieldwork-drone.jpg')}
-        alt="forestmap.ai field team operating a survey drone"
+        alt="James Ball demonstrating drone survey techniques to the field team in Harapan, Indonesia"
         loading="lazy"
         class="aspect-[4/3] w-full rounded-3xl object-cover"
       />

@@ -15,8 +15,9 @@ export type Service = {
   provisions: Provision[];
   evidence: string;
   marketContext?: string;
-  exampleImage?: { src: string; caption: string };
+  exampleImage?: { src: string; caption: string; credit?: string };
   relatedCaseStudy?: { id: string; label: string };
+  researchLink?: { label: string; href: string };
 };
 
 export const services: Service[] = [
@@ -31,6 +32,7 @@ export const services: Service[] = [
     exampleImage: {
       src: '/photos/risk-map.jpg',
       caption: 'Example output: deforestation risk maps for the Democratic Republic of the Congo across forecast scenarios. Every forest pixel is classified as high, low, or no risk. From our peer-reviewed REDD+ baseline model (Ball et al., 2024, Scientific Reports).',
+      credit: 'Source: Ball et al. (2024), Scientific Reports (CC BY 4.0)',
     },
     clientProblem:
       "We need to know where we'll lose forest before it happens - so we can prioritise patrols, target interventions, and defend our carbon assets.",
@@ -69,6 +71,11 @@ export const services: Service[] = [
     heroTitle: "If you can't tell what species are in your forest, you can't manage it, value it, or defend your claims about it.",
     lead: 'We map individual tree crowns and classify species from aerial and satellite imagery - in forests where canopies are dense, species are diverse, and off-the-shelf products fall short. The result is an ecological inventory detailed enough to support carbon accounting, biodiversity assessment, EUDR compliance, and restoration monitoring.',
     heroImage: '/photos/tree-climb-2.jpg',
+    exampleImage: {
+      src: '/photos/bakim-detection.jpg',
+      caption: 'Example output: individual tree-crown delineation, species grouping, vitality classification, and per-tree points generated from drone imagery. From the BaKIM urban-forestry system, where we optimised and operationalised the computer-vision pipeline.',
+      credit: 'Source: Smart City Bamberg / BaKIM project',
+    },
     clientProblem:
       "We need to know what's actually in our forest - species, structure, health - not just that it's green.",
     provisions: [
@@ -133,11 +140,19 @@ export const services: Service[] = [
         title: 'AI fusion pipeline',
         body: 'We fuse multi-source data into coherent, interpretable outputs - maps, inventories, and risk layers formatted for your workflow.',
       },
+      {
+        title: 'Foundation-model embeddings',
+        body: 'Where they help, we apply emerging geospatial foundation models - large AI models pre-trained on Earth-observation data - to extract more signal from your imagery and extend mapping into data-sparse areas, reducing how much labelled training data a project needs.',
+      },
     ],
     evidence:
       'Demonstrated across multiple sensor modalities and forest types, including published work on multisensor fusion (LiDAR + multispectral + hyperspectral) for improved tree segmentation.',
     marketContext:
       'How we work: (1) Scoping - what decision does this data need to support? (2) Design - which sensors, at what resolution, over what time period? (3) Collection - we coordinate acquisition or work with your providers. (4) Processing - our AI pipelines fuse the data. (5) Delivery - outputs formatted for your workflow.',
+    researchLink: {
+      label: 'Read our research on geospatial foundation models for forests',
+      href: '/research',
+    },
   },
   {
     slug: 'decision-support',
