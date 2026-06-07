@@ -6,6 +6,8 @@ whenever an image is added or replaced.
 | File(s) | What it shows | Source / original | Owner | Licence / permission |
 | --- | --- | --- | --- | --- |
 | `james-ball.{jpg,webp}` | Founder headshot (Dr James Ball) | `James_CE.jpg` from forestmap.ai (Squarespace) | forestmap.ai | Own content |
+| `christopher-kotthoff.{jpg,webp}` | Team headshot (Christopher Kotthoff) | Team photo from forestmap.ai (Squarespace) | forestmap.ai / Christopher Kotthoff | Own content / used with permission |
+| `kingston-kingsley.{jpg,webp}` | Team headshot (Kingston Kingsley) | Profile photo from X/Twitter (@KJKngsly) | Kingston Kingsley | Used with permission |
 | `fieldwork-drone.{jpg,webp}` | James Ball demonstrating drone survey techniques to the field team in Harapan, Indonesia | `Website/assets/IMG-20230211-WA0020.jpg` | forestmap.ai | Own content |
 | `tree-climb.{jpg,webp}` | James Ball carrying out canopy-access fieldwork | `Website/assets/624A0704.jpg` | forestmap.ai | Own content |
 | `tree-climb-2.{jpg,webp}` | James Ball climbing a forest canopy tree | `Website/assets/624A0450.jpg` | forestmap.ai | Own content |
